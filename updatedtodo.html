@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main id="main">
+
+    </main>
+    
+</body>
+</html>
+<script>
+let main = document.getElementById('main')
+let todos = []
+    let fetcther = async () => {
+try {
+
+    let response = await fetch('https://dummyjson.com/todos')
+        let data = await response.json()
+console.log(data);
+let theTodo = data.todos
+theTodo.forEach(todo => {
+    main.innerHTML += `<p>${todo.todo} </p>
+    <button onclick="viewOne(${todo.id})">see more</button>`
+});
+
+
+} catch (error) {
+    alert(error)
+}
+
+       
+    }
+
+    fetcther()
+
+function viewOne(id){
+    localStorage.setItem('todoId', id)
+    window.location.href = 'updatedTodoTable.html'
+}
+
+</script>

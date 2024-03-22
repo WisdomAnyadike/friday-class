@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="welcome"> welcome to js class     </h1>
+    <!-- <button onclick="alert('you clicked me')"> click me    </button> -->
+
+<h1 id="rode"></h1>
+<h3 id="yh">    </h3>
+<main>
+    <input  id="input1" type="text">
+    <button onclick="giveName()">click me</button>
+</main>
+
+<main>
+    <input  id="input2" type="text">
+</main>
+
+</body>
+</html>
+
+<script>
+ 
+let no1 = 50
+
+let no2 = 100
+let him = no1 + no2
+
+console.log(no1 + no2)
+// alert(no1 + no2)
+
+let rode = document.getElementById('rode')
+rode.innerHTML = him
+
+
+
+
+
+    // alert('internal way')
+    document.getElementById('welcome').innerHTML = 'changed'
+
+let country = 'nigeria'
+let info = {
+    name: 'Daniel',
+    age: 2 , 
+    country : 'USA'
+}
+
+info.name
+console.log(info['name'])
+
+console.log(info)
+
+console.log(country)
+
+let giveName =  () => {
+console.log(document.getElementById('input1').value)
+console.log(document.getElementById('input2').value)
+
+console.log(Number(document.getElementById('input1').value) + Number(document.getElementById('input2').value)) 
+}
+
+
+
+
+</script>
+<script src="profile.js"></script>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div{
+            position: relative;
+            height: 500px;
+            width: 350px;
+            background-color: rgba(37, 36, 36, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         
+        }
+
+        #div audio::-webkit-media {
+            background-color: rgba(165, 42, 42, 0);
+            
+        }
+
+      
+audio {
+  width: 250px;
+  max-width: 300px; 
+  margin: 20px 0;
+}
+
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-volume-slider {
+background-color: rgba(210, 105, 30, 0);
+}
+
+audio::-webkit-media-controls-panel {
+   
+    backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  background-color:whitesmoke;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#div button{
+    background-color: rgba(240, 248, 255, 0);
+   border: none;
+}
+
+#songsArray button{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+
+#controls{
+    width: 80%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#speedControl{
+    width: 20px;
+   border: none;
+   outline: none;
+}
+
+/* #volume{
+   
+} */
+
+    </style>
+</head>
+<body>
+ 
+
+    <div>
+        <button onclick="playMusic()" > play music </button>
+<input type="range" id="volume" min="0" max="1" value="1" step="0.1" oninput="adjustVolume()">
+<audio id="audioFile" src="https://samplesongs.netlify.app/Death%20Bed.mp3"> </audio>
+
+    </div>
+
+    
+</body>
+</html>
+<script src="songs.js"></script>
+<script>
+ console.log(songs);
+ let n = 0
+ let audio = document.getElementById('audioFile')
+ let playing = false
+
+
+
+
+
+ moveBack()
+  
+ function displaySongs(i){
+  n = i
+
+    if(n < 0){
+        n = n + 1
+    } else if ( n > (songs.length - 1)){
+        n = n - 1
+    } else {
+        document.body.innerHTML = ''  
+    document.body.innerHTML = `<div id="div" > <img style="width:200px; height:200px; " src="${songs[i].artwork}" />
+    <p style="margin:5px; margin-top:10px;">${songs[i].title} </p>
+    <small style="margin:5px; ">${songs[i].artist} </small>
+    <audio id="audioFile${i}"  loop draggable='true' src="${songs[i].url}"></audio> 
+
+    <div id="controls">
+        <input type="number" id="speedControl" oninput="changeSpeed()" step="0.1" min="0.5" max="2" value="1">
+    <button id="playButton" onclick="playMusic()" > <iconify-icon icon="ph:play-fill" style="color: #000;" width="24"></iconify-icon> </button>
+    <input style="background-color:black; width:50px; " type="range" id="volume" min="0" max="1" value="1" step="0.1" oninput="adjustVolume()">
+</div>
+
+   
+    <button style="position: absolute; top: 5%; left: 0;" onclick="moveBack()"> <iconify-icon icon="iconamoon:arrow-left-2-bold" style="color: #626262;" width="24"></iconify-icon> </button>
+
+ 
+   
+
+     <button style="position: absolute; top: 30%; left: 0;" onclick="displaySongs(--n)"><iconify-icon icon="raphael:arrowleft" style="color: #626262;" width="24"></iconify-icon> </button>
+
+       <button style="position:absolute; top: 30%; right: 0;" onclick="displaySongs(++n)"> <iconify-icon icon="raphael:arrowright" style="color: #626262;" width="24"></iconify-icon> </button> </div>
+    `
+
+    audio = document.getElementById(`audioFile${i}`)
+    console.log(audio);
+    }
+
+ 
+ }
+
+
+  function moveBack(){
+    n = 0
+    document.body.innerHTML = ''  
+    document.body.innerHTML =  `<div id="songsArray"> </div>`
+   songs.map((song)=> { songsArray.innerHTML += `<button onclick="displaySongs(${n++})" style='width:300px;'> <img style="width:50px; height:50px;" src='${song.artwork}' > <p style="width:fit-content; display:flex; flex-direction:column; margin-left:20px;" >  ${song.title} <small> ${song.artist} </small>   </p>   </button>`})
+
+ 
+ }
+
+
+
+
+ function playMusic(){
+   
+    let playButton = document.getElementById('playButton')
+if (playing == false) {
+    audio.play()
+    playButton.innerHTML = ''
+    playButton.innerHTML = '<iconify-icon icon="solar:pause-bold" style="color: #000;" width="24"></iconify-icon>'
+    playing = true
+}  else{
+    audio.pause()
+    playButton.innerHTML = ''
+    playButton.innerHTML = '<iconify-icon icon="ph:play-fill" style="color: #000;" width="24"></iconify-icon>'
+    playing = false
+}
+    
+ }
+
+ function adjustVolume(){
+    let volume = document.getElementById('volume')
+    audio.volume = volume.value
+ }
+
+
+
+ function changeSpeed () {
+    let speedControl = document.getElementById('speedControl');
+    const newSpeed = parseFloat(speedControl.value);
+    audio.playbackRate = newSpeed; 
+}
+
+
+
+</script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>

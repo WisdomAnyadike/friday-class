@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #forImage img , #photos img{
+            width: 500px;
+            height: 500px;
+        }
+
+        #colorChange{
+            width: 600px;
+            height: 600px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <input type="file" id="myFile" onchange="pickFile()" >
+    </main>
+    <div id="forImage">
+
+    </div>
+
+    <div id="photos">
+
+
+    </div>
+    <button onclick="displayPics(--n)">Previous</button> <button onclick="displayPics(++n)">Next</button>
+    
+
+    <div id="colorChange" style="background-color: blue;" >
+
+    </div>
+    <input type="color" id="color">
+</body>
+</html>
+<script>
+ 
+    let photos = JSON.parse(localStorage.getItem('image')) || []
+    let myFile = document.getElementById('myFile')
+    let photo = document.getElementById('photos')
+    let n = 0
+
+ 
+    function pickFile (){
+        let file = myFile.files[0]
+        let reader = new FileReader() 
+
+        reader.addEventListener("load" , (e)=> {
+            let data = e.target.result
+            let forImage = document.getElementById('forImage')  
+            forImage.innerHTML = `<img src='${data}' >`
+            photos.push(data)
+            localStorage.setItem('image', JSON.stringify(photos))  
+        })
+
+        if(file){
+            reader.readAsDataURL(file)
+        }
+
+    
+    }
+
+
+   
+    displayPics(n)
+
+    function displayPics(i){
+        let lastIndex = (photos.length - 1) 
+  if(i < 0){
+        n = n + 1
+        return alert('you cant go futher, click next')
+       }  else if ( i  > lastIndex ){
+    n = n - 1
+    return alert('you cant go futher, click previous')
+       } else{
+        photo.innerHTML = `<img src="${photos[i]}" > ` 
+       }  
+    }
+
+
+
+   let input = document.getElementById('color')
+ input.addEventListener('input' , ()=> {
+    let div = document.getElementById('colorChange')
+   div.style.backgroundColor = input.value
+ }
+ 
+ )
+    
+  
+
+
+
+</script>

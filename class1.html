@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="text">
+    <button onclick="arrayPush()"> Push</button>
+    <button onclick="arrayPop()">Pop</button>
+    <button onclick="arrayUnshift()"> Unshift</button>
+    <button onclick="arrayShift()"> Shift</button>
+    
+
+    <div id="h1"> </div>
+    
+</body>
+</html>
+<script>
+    // let num = 0
+    // do{
+    //     console.log(num)
+    //     num++
+    // }while(num < 10 )
+
+
+    for(let i= 0 ; i < 21 ; i++){
+        if (i % 2 == 0){
+            console.log(i)
+        }  
+    }
+
+
+    
+    let code = ''
+
+    for(let i= 0 ; i < 100 ; i++){
+    
+              
+    let randomNum =  Math.floor(Math.random()  *  10 )
+
+
+        if (randomNum % 2 == 1 ){
+            code +=  randomNum  
+      } 
+        
+      if(code.length == 7){
+           break
+      }    
+    }
+console.log(code)
+
+
+let arr = []
+
+// arr.unshift('wiz')
+// arr.pop()
+// arr.shift()
+
+let h1 = document.getElementById('h1')
+function keep(){
+    if(arr.length == 0){
+       h1.innerHTML = `<h1>there are no users</h1>`
+     } else{   h1.innerHTML = ''
+    for (let index = 0; index < arr.length; index++) {
+    h1.innerHTML += `<p>${arr[index]} <button id=but onclick='deleteNum(${index})'> x </button> </p>`
+   }}
+ 
+}
+
+keep()
+
+  
+
+
+let arrayPush = ()=> {
+    let lastindex = arr.length
+    let input = document.getElementById('input')
+    let inputvalue = input.value
+   arr.push(inputvalue)
+   input.value = ''
+
+ keep()
+ 
+
+   console.log(arr)
+}
+let arrayPop = ()=> {
+    let input = document.getElementById('input')
+    let inputvalue = input.value
+   arr.pop(inputvalue)
+  input.value = ''
+   console.log(arr)
+}
+
+let arrayUnshift = ()=> {
+    let input = document.getElementById('input')
+    let inputvalue = input.value
+   arr.unshift(inputvalue)
+  input.value = ''
+   console.log(arr)
+}
+
+let arrayShift = ()=> {
+    let input = document.getElementById('input')
+    let inputvalue = input.value
+   arr.shift(inputvalue)
+  input.value = ''
+   console.log(arr)
+}
+
+
+// let names = ['dan' , 'sam' , 'vic']
+// for (let index = 0; index < names.length; index++) {
+//    h1.innerHTML += `<p>${names[index]}</p>`
+    
+// }
+
+
+function deleteNum(num){
+    console.log(num)
+     arr.splice(num,1)
+     keep()
+  
+   
+
+
+console.log(arr)
+}
+
+
+</script>

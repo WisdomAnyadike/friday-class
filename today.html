@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   
+     
+    </style>
+</head>
+<body>
+    <div id="color">
+    <input id="input" type="number"> <button id="button"> click </button>
+
+ <button onclick="changeColor()"> light/dark </button>
+
+    <br>
+    <input id="input1" type="text"> <input id="input2" type="text"> <button id="button1">click me</button>
+
+  <p id="ron">       </p>
+  <button onclick="add()" > add </button>
+  <button onclick="minus()">minus</button>
+
+</div>
+</body>
+</html>
+<script>
+
+let button = document.getElementById('button')     
+let input = document.getElementById('input')
+let ron = document.getElementById('ron')
+
+button.addEventListener('click' , ()=> {
+    if(input.value >= 18){
+        alert('You are Eligible')
+    } else {
+        alert('You are not Eligible')
+    }
+})
+ 
+
+let button1 = document.getElementById('button1')
+let input1 = document.getElementById('input1')
+let input2 = document.getElementById('input2')
+
+button1.addEventListener('click' , ()=> {
+    if(input1.value == input2.value){
+        alert('password matches')
+    } else {
+        alert('passwords do not match')
+    }
+})
+
+let fig = 0
+ron.textContent = fig
+
+
+
+function add (){
+    ++fig 
+    ron.textContent = fig
+
+
+}
+
+function minus (){
+        --fig 
+    ron.textContent = fig
+}
+
+
+// let age = 18
+// let userAge = prompt ('how old are you?', 'enter here')
+
+// if (userAge >= age){
+//     alert('eligible')
+// }else if (userAge == 0){
+//     alert('you\'re not eligible' )
+// }else {
+//     alert('you\'re not eligible')
+// }
+
+// userAge >= age ?  alert('eligible') : alert('you\'re not eligible')
+
+
+let divColor = document.getElementById('color')
+
+document.body.style.backgroundColor = 'white'
+let changeColor = ()=> {
+  document.body.style.backgroundColor == 'white' ?   document.body.style.backgroundColor = 'black' : document.body.style.backgroundColor = 'white'
+}
+
+
+</script>
+
+<!-- <script>
+
+   let victoious = null
+console.log(victoious)
+
+let age = Symbol('-')
+let name = '19'
+name = Number('19')
+
+</script> -->

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .name{
+            background-color: rgb( 44, 232, 200);
+        }
+    </style>
+</head>
+<body >
+
+    <input type="number" id="input"/> <button onclick="countDown()"> countdown </button>
+    <h1 id="h1"> </h1>
+
+    
+</body>
+</html>
+<script>
+  
+
+
+
+    function changeBackgroundColor() {
+        let first = Math.floor(Math.random() * 256 ) //0 - 0.999   0 - 255  0 - 9.99
+        let second = Math.floor(Math.random() * 256 )
+        let third = Math.floor(Math.random() * 256 )
+
+        document.body.style.backgroundColor = `rgb( ${first} , ${second} , ${third})`
+    }
+
+  
+
+   
+
+
+
+let colorInterval = setInterval(() => {
+   console.log('hey'); 
+   changeBackgroundColor()
+}, 5000);
+
+clearInterval(colorInterval)
+
+
+const input = document.getElementById('input')
+const h1 = document.getElementById('h1')
+
+// function countDown() {
+//     let num = input.value  
+//     h1.innerHTML = num
+// let decreaser = setInterval(()=> {
+//   num--
+//   h1.innerHTML = num
+//   if (num == 0) {
+//     alert('time up')
+//     clearInterval(decreaser)
+//     h1.innerHTML = 'Time UP'
+//   }
+
+// }, 1000)
+     
+// }
+
+
+setTimeout(()=> {
+h1.innerHTML = 'HI , I SHOWED AFTER 5 SECS'
+} , 5000 )
+
+
+let arr = ['dad' , 23 , null , undefined , {hey: 'what'} , ['dad', 'mum']]
+
+console.log(arr[5]);
+ 
+ console.log(arr[5][1]);
+</script>

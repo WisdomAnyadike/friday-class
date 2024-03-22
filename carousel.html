@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <img width="300" height="300" src="" id="image"/>
+    <button onclick="moveBack()"> PREVIOUS </button>
+    <button onclick="moveFront()"> NEXT </button> 
+
+
+    <div style="width: 300px; height: 300px;"  id="div"> </div>
+    <button onclick="colorBack()"> PREVIOUS </button>
+    <button onclick="colorFront()"> NEXT </button> 
+</body>
+</html>
+<script>
+    let imagesArr = [ 'https://hips.hearstapps.com/clv.h-cdn.co/assets/17/29/2048x1152/hd-aspect-1500566326-gettyimages-512366437-1.jpg' , 'https://i.pinimg.com/originals/02/ae/22/02ae22c85ca7b2d0d3cf02ae6c50c0b6.jpg' , 'https://static.toiimg.com/photo/msid-53891743,width-96,height-65.cms']
+
+    let index = 0
+    let image = document.getElementById('image')
+    image.src = imagesArr[index]
+
+    function moveFront(){
+    if ( index == (imagesArr.length - 1)) {
+        index = 0
+    }  else {
+        index++
+    }
+
+    image.src = imagesArr[index]  
+    }
+
+
+    function moveBack() {
+       if (index == 0) {
+        index = imagesArr.length - 1
+       } else{
+        index--
+       }
+  
+      image.src = imagesArr[index]  
+    }
+
+
+    let colorsArr = [ 'red' , 'orange' , 'blue']
+    let i = 0
+    let div = document.getElementById('div')
+    div.style.backgroundColor = colorsArr[0]
+
+
+    function colorFront(){
+    if ( i == (colorsArr.length - 1)) {
+        i= 0
+    }  else {
+        i++
+    }
+
+     div.style.backgroundColor = colorsArr[i]
+    }
+
+    function colorBack() {
+       if (i == 0) {
+        i = colorsArr.length - 1
+       } else{
+        i--
+       }
+  
+       div.style.backgroundColor = colorsArr[i] 
+    }
+
+
+let num = ''
+    for (let index = 0; index < 10; index++) {
+     let randomNum = Math.floor( Math.random() * 1000000 )
+  num += index
+        
+    }
+
+    console.log(num.length);
+
+
+    console.log(3 % 2);
+for (let index = 0; index < 10; index++) {
+    if (index % 2 == 1 ) {
+        console.log(index);
+    }
+    
+}
+
+let ind = 0
+while (ind < 20 ) {
+    ind++
+  console.log(ind);  
+}
+
+
+function return4() {
+let me = 20 + 25
+    return '25'
+    console.log(me);
+}
+
+console.log(return4());
+
+let destination = 'shoprite'
+function comeHome() {
+    if ( destination !== 'shoprite' && destination.startsWith('sh')) {
+        return
+    }else{
+        return 'ive gotten to shoprite'
+    }
+    
+}
+
+
+</script>

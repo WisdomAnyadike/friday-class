@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="paymentForm">
+    <button id="paymentForm">CheckOUT</button>
+</form>
+</body>
+</html>
+<script>
+    // onclick="makePayment()"
+</script>
+<!-- <script src="https://checkout.flutterwave.com/v3.js"></script> -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+
+//  function makePayment() {
+//     FlutterwaveCheckout({
+//       public_key: "FLWPUBK_TEST-337d4e3e6c0c10c22b28cac389a35d46-X",
+//       tx_ref: "txref-DI0NzMx12",
+//       amount: 2500,
+//       currency: "NGN",
+//       payment_options: "card, banktransfer, ussd",
+//       meta: {
+//         source: "docs-inline-test",
+//         consumer_mac: "92a3-912ba-1192a",
+//       },
+//       customer: {
+//         email: "test@mailinator.com",
+//         phone_number: "08100000000",
+//         name: "Ayomide Jimi-Oni",
+//       },
+//       customizations: {
+//         title: "Flutterwave Developers",
+//         description: "Test Payment",
+//         logo: "https://checkout.flutterwave.com/assets/img/rave-logo.png",
+//       },
+//     });
+//   }
+
+
+const paymentForm = document.getElementById('paymentForm');
+paymentForm.addEventListener("submit", payWithPaystack, false);
+
+function payWithPaystack(e) {
+  e.preventDefault();
+
+  let handler = PaystackPop.setup({
+    key: 'pk_test_9a558288d1670a641dafa6f4e899ddb24f2fe749', // Replace with your public key
+    email: 'anyadikewisdom@gmail.com',
+    amount: 5000 * 100,
+    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+    // label: "Optional string that replaces customer email"
+    onClose: function(){
+      alert('Window closed.');
+    },
+    callback: function(response){
+      let message = 'Payment complete! Reference: ' + response.reference;
+      alert(message);
+    }
+  });
+
+  handler.openIframe();
+}
+
+
+
+
+
+
+
+    // let allProducts 
+    // let products 
+    // let fetchAllProducts = async ()=> {  
+    //       let response = await fetch('https://dummyjson.com/products')
+    //       let data = await response.json()
+    //     console.log(data);
+    //   allProducts = data.products;  
+    //  localStorage.setItem('allProd', JSON.stringify(allProducts))
+    //  console.log(allProducts);
+
+    //     }
+    
+
+    // fetchAllProducts()
+
+    // function dispAllProducts (){
+    //     products = JSON.parse(localStorage.getItem('allProd'))
+    //     products.forEach((product ) => {
+    //        document.body.innerHTML += `
+    //         <img src="${product.images[3]}" /> 
+    //         <p> ${product.title} </p>
+    //         `
+    //     });
+    // }
+    // dispAllProducts()
+
+</script>

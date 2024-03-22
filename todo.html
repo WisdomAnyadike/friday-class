@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let fetcher = async () => {
+    try {
+      let response = await fetch("https://dummyjson.com/todos");
+      let data = await response.json();
+      console.log(data);
+
+      let todos = data.todos;
+      localStorage.setItem("todos", JSON.stringify(todos));
+
+      todos.forEach((el, i) => {
+        document.body.innerHTML += `<p>${el.todo} <button value="${i}" id="button${i}" onclick="view(event)"> see more </button </p>`;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetcher();
+
+  function view(event) {
+    el = event.target;
+    console.log(el);
+
+    let todo = JSON.parse(localStorage.getItem("todos"))[el.value];
+
+    localStorage.setItem("todo", JSON.stringify(todo));
+
+    window.location.href = "todoTable.html";
+  }
+</script>

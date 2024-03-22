@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="input" /> <button onclick="addTodo()"> add</button>
+
+    <div id="todoDiv">
+
+    </div>
+
+
+
+    <input type="number" id="input1" /> <button onclick="goUp()"> Up </button> <button onclick="goDown()"> Down
+    </button>
+    <h1 id="h1"> </h1>
+</body>
+
+</html>
+<script>
+
+    let input = document.getElementById('input')
+    let todoDiv = document.getElementById('todoDiv')
+    let todoArr = []
+
+    function addTodo() {
+        todoArr.push(input.value)
+        todoDiv.innerHTML = ''
+        for (let index = 0; index < todoArr.length; index++) {
+            todoDiv.innerHTML += `<p>${todoArr[index]}  <button  onclick="deleteTodo(${index})"> delete </button></p>`
+
+        }
+    }
+
+
+    function deleteTodo(index) {
+        todoArr.splice(index, 1)
+
+        todoDiv.innerHTML = ''
+        for (let index = 0; index < todoArr.length; index++) {
+            todoDiv.innerHTML += `<p>${todoArr[index]}  <button  onclick="deleteTodo(${index})"> delete </button></p>`
+
+        }
+
+    }
+
+    let input1 = document.getElementById('input1')
+    let h1 = document.getElementById('h1')
+
+
+    function goUp() {
+
+        
+        let number = input1.value
+        h1.innerHTML = number
+
+
+        let increaser = setInterval(() => {
+            number++
+            h1.innerHTML = number
+            if (number >= 10) {
+                h1.innerHTML = ''
+             alert('number must be less than 10')
+             clearInterval(increaser)
+            }
+        }, 1000)
+
+     
+
+
+    }
+
+    function goDown() {    
+        let number = input1.value
+        h1.innerHTML = number
+        let decreaser = setInterval(() => {
+            number--
+            h1.innerHTML = number
+            if (number == 0) {
+                clearInterval(decreaser)
+            }
+        }, 1000)
+    
+    }
+
+
+
+
+
+
+</script>

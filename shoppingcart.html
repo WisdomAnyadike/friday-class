@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      table,
+      th,
+      td {
+        padding: 20px;
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="text" id="item" />
+    <input type="number" id="price" />
+    <button onclick="addToCart()">add</button>
+    <div id="table">
+      <table>
+        <thead>
+          <th>item</th>
+          <th>price</th>
+          <th>purchased</th>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <h2 id="total"></h2>
+    </div>
+  </body>
+</html>
+<script>
+  let lists = [];
+  let totalValue = 0;
+  let item = document.getElementById("item");
+  let price = document.getElementById("price");
+  let tbody = document.getElementById("tbody");
+  let total = document.getElementById("total");
+  
+
+  function addToCart() {
+    if (item.value == "" || price.value == "") {
+      return alert("fill the empty fields");
+    } else {
+      let list = {
+        name: item.value,
+        price: Number(price.value),
+        purchased: `<input type="checkbox" value="${price.value}" class='purchase'   > `,
+      };
+
+      totalValue += list.price;
+      lists.push(list);
+
+      tbody.innerHTML += ` <tr class='tr'>
+    <td>${list.name}</td> <td class='theprice' >${list.price}</td> <td >${list.purchased}</td>  <td><button class='buttons'>edit</button> </td>
+       </tr>
+       `;
+      item.value = "";
+      price.value = "";
+
+
+ 
+   
+    }
+
+
+
+    console.log(lists);
+    console.log(totalValue);
+   
+
+    let inputs = document.querySelectorAll(".purchase");
+
+    inputs.forEach((input) => {
+      input.addEventListener("click", (event) => {
+        let el = event.target;
+        console.log(el)
+        if (el.checked) {
+          total.innerHTML = `Total:${totalValue - Number(el.value)}`;
+          totalValue = totalValue - Number(el.value)
+        } else {
+            totalValue = totalValue + Number(el.value)
+          total.innerHTML = `Total:${totalValue}`;
+        }
+      });
+    });
+
+
+    total.innerHTML = `Total:${totalValue}`;
+  
+  }
+
+
+ 
+
+  // let purchase = document.getElementById('purchase')
+  //     let theprice = document.getElementById('theprice')
+  //     if (purchase.checked){
+  //         total.innerHTML =  `Total:${totalValue - Number(theprice.innerHTML) }`
+  //     }else{
+  //         total.innerHTML =  `Total:${totalValue}`
+  //     }
+</script>

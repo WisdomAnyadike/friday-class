@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+  table , th ,  td {
+    padding: 20px;
+      border: 2px solid black;
+      border-collapse: collapse;
+  }
+
+    </style>
+</head>
+<body>
+
+    <div> 
+
+        <table>
+            <thead id="thead"> 
+           
+           </thead>
+
+           <tbody id="tbody">
+          
+
+           </tbody>
+       </table>
+
+    </div>
+
+    
+  
+    
+</body>
+</html>
+<script>
+    let tBody = document.getElementById('tbody')
+    let thead = document.getElementById('thead')
+ let arrObj = [
+    {name:'Daniel', age: 3 , owing: false },
+   {name:'Samuel', age: 3 , owing: true },
+   {name:'Mike', age: 3 , owing: false},
+   {name:'Victor', age: 3 , owing: false}
+
+ ]
+
+
+ let obj =    {name:'Name', age:'Age' , owing: 'Owing'  }
+ thead.innerHTML =  `<th>${obj.name}</th>  <th>${obj.age}</th>  <th>${obj.owing}</th>  `
+ 
+
+
+
+
+//  for(let index = 0 ; index < arrObj.length ; index++){
+  
+
+//     tBody.innerHTML +=  ` <tr>
+        
+//         <td>${ arrObj[index].name}</td>  <td>${ arrObj[index].age} </td>   <td>${ arrObj[index].owing} </td> 
+        
+//         </tr>`
+
+
+
+//  }
+
+
+
+arrObj.map( (object) => {   
+ tBody.innerHTML += ` <tr>
+        
+              <td>${ object.name}</td>  <td>${ object.age} </td>   <td>${ object.owing} </td> 
+                
+              </tr> `
+     }  )
+
+
+
+
+ 
+
+
+
+</script>
+

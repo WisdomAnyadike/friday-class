@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        padding: 20px;
+        border: 2px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>User Id</th>
+          <th>Todo</th>
+          <th>Completed</th>
+          <th>Id</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+<script>
+
+let todoId =localStorage.getItem("todoId");
+
+  let fetcther = async () => {
+try {
+   
+    let response = await fetch(`https://dummyjson.com/todos/${todoId}`)
+        let data = await response.json()
+console.log(data);
+
+tbody.innerHTML = `  <tr>
+                <td>${data.userId} </td>
+                <td> ${data.todo} </td>
+                <td>${data.completed}  </td>
+                <td>${data.id} </td>
+            </tr>`;
+
+
+} catch (error) {
+ console.log(error);
+}
+
+       
+    }
+
+    fetcther()
+
+
+
+
+
+  
+</script>

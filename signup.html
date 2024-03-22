@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        table {
+            margin-top: 40px;
+        }
+
+        table,
+        th,
+        td {
+            padding: 20px;
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+
+        legend {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <form action="" method="get"> -->
+
+    <p>
+        <label for="username">Username :</label>
+        <input id="username" type="text" />
+    </p>
+
+    <p>
+        <label for="email"> Email : </label>
+        <input id="email" type="email" />
+    </p>
+
+    <p>
+        <label for="password"> Password : </label>
+        <input id="password" type="password" />
+    </p>
+
+    <p>
+        <label for="confirmpassword"> Confirm Password : </label>
+        <input id="confirmpassword" type="password" onkeyup="checkPassword()" />
+        <legend id="passwordchecker">Passwords do not match</legend>
+    </p>
+
+    <p>
+        <input id="terms" type="checkbox" />
+        <label for="terms"> Do you agree to our terms and conditions? </label>
+    </p>
+
+    <button onclick="newUsers()">Sign up</button>
+
+    <!-- </form> -->
+
+    <br />
+    <br />
+
+    <button onclick="allUsers()">All users</button>
+    <button onclick="check()">Checked users</button>
+    <button onclick="uncheck()">Unchecked users</button>
+
+    <table id="table">
+        <thead>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Confirm Password</th>
+            <th>Terms</th>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <p>
+        <label for="loginu"> Username</label>
+        <input id="loginu" type="text" />
+    </p>
+
+    <p>
+        <label for="loginp"> Password </label>
+        <input id="loginp" type="password" />
+    </p>
+
+    <p>
+        <button onclick="login()">Login</button>
+    </p>
+</body>
+
+</html>
+
+<script>
+    let users = [];
+
+    let username = document.getElementById("username");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let confirmpassword = document.getElementById("confirmpassword");
+    let terms = document.getElementById("terms");
+    let tbody = document.getElementById("tbody");
+    let passwordchecker = document.getElementById("passwordchecker");
+    let table = document.getElementById("table");
+    let loginusername = document.getElementById("loginu");
+    let loginpassword = document.getElementById("loginp");
+
+    function newUsers() {
+        let passwordValue = String(password.value).trim();
+        let confirmPasswordValue = String(confirmpassword.value).trim();
+
+
+
+        let user = {
+            username: username.value,
+            email: email.value,
+            password: password.value,
+            confirmpassword: confirmpassword.value,
+            terms: terms.checked,
+        };
+
+        if (
+            username.value == "" ||
+            email.value == "" ||
+            password.value == "" ||
+            confirmpassword.value == ""
+        ) {
+            alert("A field is empty");
+            return;
+        } else if (passwordValue !== confirmPasswordValue) {
+            alert("passwords do not match");
+            return;
+        } else {
+            users.push(user);
+
+            tbody.innerHTML += ` <tr>
+            <td> ${user.username} </td> <td> ${user.email} </td> <td> ${user.password} </td> <td> ${user.confirmpassword} </td> <td>${user.terms} </td>
+           </tr>`;
+        }
+
+        username.value = "";
+        email.value = "";
+        password.value = "";
+        confirmpassword.value = "";
+        terms.checked = false;
+
+        console.log(user);
+        console.log(users);
+    }
+
+    function checkPassword() {
+        let passwordValue = String(password.value).trim();
+        let confirmPasswordValue = String(confirmpassword.value).trim();
+        if (passwordValue !== confirmPasswordValue) {
+            passwordchecker.style.visibility = "visible";
+            passwordchecker.style.color = "red";
+            passwordchecker.style.fontSize = "10px";
+        } else {
+            passwordchecker.style.visibility = "hidden";
+        }
+    }
+
+    function allUsers() {
+        tbody.innerHTML = "";
+
+        users.map(
+            (user) =>
+            (tbody.innerHTML += ` <tr>
+        <td> ${user.username} </td> <td> ${user.email} </td> <td> ${user.password} </td> <td> ${user.confirmpassword} </td> <td>${user.terms} </td>
+       </tr>`)
+        );
+    }
+
+    function check() {
+        let checkedUsers = users.filter((user) => user.terms == true);
+        tbody.innerHTML = "";
+        checkedUsers.map((user) => {
+            tbody.innerHTML += ` <tr>
+            <td> ${user.username} </td> <td> ${user.email} </td> <td> ${user.password} </td> <td> ${user.confirmpassword} </td> <td>${user.terms} </td>
+           </tr>`;
+        });
+    }
+
+    function uncheck() {
+        let uncheckedUsers = users.filter((user) => user.terms == false);
+        tbody.innerHTML = "";
+        uncheckedUsers.map((user) => {
+            tbody.innerHTML += ` <tr>
+            <td> ${user.username} </td> <td> ${user.email} </td> <td> ${user.password} </td> <td> ${user.confirmpassword} </td> <td>${user.terms} </td>
+           </tr>`;
+        });
+    }
+
+    function login() {
+        let foundUser = users.find((user) => {
+            return (
+                loginpassword.value == user.password &&
+                loginusername.value == user.username
+            );
+        });
+        console.log(foundUser);
+        if (foundUser) {
+            alert("login succesful");
+        } else {
+            alert("user not found");
+        }
+    }
+</script>

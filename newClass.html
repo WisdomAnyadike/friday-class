@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="div" onclick="">    </div>
+    
+ <input type="text" id="input"/> <button onclick="addTodo()"> ADD </button>
+ <div id="todoList"> 
+
+
+
+
+ </div>
+
+</body>
+</html>
+<script> 
+
+
+// for (let index = 10; index >= -1 ; index--) {
+ 
+//    document.body.innerHTML += `${index}`
+// }
+
+
+// let arr = ['ggg' ]
+
+
+// for (let index = 0; index < arr.length; index++) {
+//     div.innerHTML +=  `<p>  ${arr[index]} </p>`
+// }
+
+
+
+let input = document.getElementById("input")
+let todoList = document.getElementById("todoList")
+let todoArr = []
+
+
+function displayTodo() {
+    todoList.innerHTML = ''
+    for (let index = 0; index < todoArr.length; index++) {
+   todoList.innerHTML += `<p> ${todoArr[index]}  <button onclick="deleteTodo(${index})"> delete </button> </p>`
+    }
+}
+
+function addTodo() {
+ todoArr.push(input.value)
+displayTodo()  
+}
+
+
+
+function deleteTodo(i) {
+    todoArr.splice( i , 1)
+    console.log(todoArr);
+    displayTodo()
+}
+
+
+
+todoArr.splice(0, 2 , 'folarin' , "fola" )
+
+
+
+
+
+
+// function saySmth(params) {
+//     console.log(`hello ${params}`);
+// }
+
+
+// saySmth('wiz')
+// saySmth('dave')
+
+
+// let num = 0
+// let saved = setInterval(()=> {
+// num++
+// console.log(num);
+//  if (num == 20){
+//     clearInterval(saved)
+//  }
+// }, 1000)
+
+
+
+
+</script>

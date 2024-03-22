@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column;">
+
+        <img width="300px" height="300px" style="margin-bottom: 10px;" src="" id="img" />
+
+        <div>
+            <button onclick="moveback()"> previous</button>
+            <button onclick="movefront()"> next </button>
+        </div>
+
+    </div>
+
+
+    <div> 
+        <input id="todoInput"/> <button onclick="addTodo()"> add </button>
+        <div id="todoDiv"> 
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+<script>
+    let todoInput = document.getElementById("todoInput")
+    let todoDiv = document.getElementById('todoDiv')
+     let todoArr = []
+     let todoObj = {}
+
+
+
+
+
+    function addTodo() {
+      todoArr.push(todoInput.value)
+      todoDiv.innerHTML = '' 
+     displayArr()
+   console.log(todoArr);  
+    }
+
+
+    function  displayArr() {
+        for (let index = 0; index < todoArr.length ; index++) {
+    let singleTodo = todoArr[index]
+    todoDiv.innerHTML += ` <p>  ${todoArr[index]}    <button onclick="deleteTodo(${index})"> delete </button> </p> ` 
+    
+   }
+    }
+
+
+
+function deleteTodo(i) {
+    todoArr.splice( i , 1  )
+    todoDiv.innerHTML = '' 
+    displayArr()
+    console.log(todoArr);
+    
+}
+
+
+
+</script>
+
+
+
+
+
+<script>
+let ind = 20
+    while(ind >= 0){
+        console.log(ind --);
+    }
+
+
+    for (let index = 0; index < 21; index++) {
+     console.log(index);
+        
+    }
+
+
+    let pin = 0
+
+    for (let index = 0; index < 10; index++) {
+      let picker = Math.floor(Math.random() * 10) // 0  - 0.99 | 0-9
+        pin += picker
+   
+    }
+    console.log(pin); 
+
+
+    let imgs = [
+    'https://media.istockphoto.com/id/825383494/photo/business-man-pushing-large-stone-up-to-hill-business-heavy-tasks-and-problems-concept.jpg?s=612x612&w=0&k=20&c=wtqvbQ6OIHitRVDPTtoT_1HKUAOgyqa7YzzTMXqGRaQ='
+    ,
+     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxvJKpIUiRJvol8zRZGPzpwaldwHcLwh_PD7m95OyGzQ&s', 
+     
+     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeB3scSuDQWG3FNtvW4jLk4faL4z4JzYWjTg8PfNmIwA&s']
+
+    let img = document.getElementById('img')
+
+    let index = 0
+    
+    img.src = imgs[index]
+
+    const moveback = () => {
+        if (index < 1) {
+            index = imgs.length - 1
+        } else {
+            index--
+        }
+        console.log(index);
+        img.src = imgs[index]
+
+    }
+
+    const movefront = () => {
+
+        if (index > imgs.length - 2) {
+            index = 0
+        } else {
+            index++
+        }
+        console.log(index);
+        img.src = imgs[index]
+
+    }
+
+
+    
+
+
+
+
+    console.log( Math.floor(3.25));
+
+</script>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="thisOne" type="text" oninput="percentage()">
+
+    <input type="text" id="second">
+
+
+    <p id="para"></p>
+
+
+    <input type="text" id="input">
+    <button onclick="decrease()"> decrease</button>
+    <h1 id="value"> </h1>
+    
+</body>
+</html>
+<script>
+let second = document.getElementById('second')
+let thisOne = document.getElementById('thisOne')
+
+    function percentage(){
+  second.value =   Number(thisOne.value) * (85/100)
+
+    }
+
+
+    let para = document.getElementById('para')
+   
+function time (){
+    let todaysDate = new Date()
+    let hour =  todaysDate.getHours()
+  if (hour < 10){
+    hour = `0${hour}`
+  }
+
+  let minutes =  todaysDate.getMinutes()
+  if (minutes < 10){
+    minutes = `0${minutes}`
+  }
+
+
+  let seconds = todaysDate.getSeconds()
+  if (seconds < 10){
+    seconds = `0${seconds}`
+  }
+
+  let output = `${hour}:${minutes}:${seconds}`
+  return output
+}
+ 
+
+
+let num = 0
+para.innerHTML = time()
+para.innerHTML += ` <h1> ${++num} </h1>`
+
+let myInterval = setInterval(()=> {
+para.innerHTML = time()
+para.innerHTML += ` <h1> ${++num} </h1>`
+
+if(num == 20) {
+    clearInterval(myInterval) }
+
+
+} , 1000)
+
+
+
+
+let value = document.getElementById('value')
+let input = document.getElementById('input')
+
+function decrease (){
+let inputValue =   Number(input.value)
+
+let clearer = setInterval(()=> {
+ inputValue--
+ value.innerHTML = inputValue
+ input.value = inputValue
+
+
+ if (inputValue == 0) {
+    
+  clearInterval(clearer)
+  alert('timeout')
+    
+ }
+        
+    }, 1000)
+
+}
+
+
+
+  
+</script>

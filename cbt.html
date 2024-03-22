@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #okay {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="thediv"></div>
+
+    <section id="section">
+      <button id="previous" onclick="makeQuestion(--n)">previous</button>
+      <button id="next" onclick="makeQuestion(++n)">next</button>
+    </section>
+  </body>
+</html>
+<script>
+  let score = [];
+  let n = 0;
+
+  let cbt = [
+    {
+      que: "which programming language is the easiest",
+      opt: ["python", "javascript", "html"],
+      corrAns: "javascript",
+    },
+    {
+      que: "what is my best food",
+      opt: ["rice", "beans", "meat"],
+      corrAns: "beans",
+    },
+    {
+      que: "is your name easy to learn? ",
+      opt: ["no", "yes", "maybe"],
+      corrAns: "yes",
+    },
+    {
+      que: "have you eaten? ",
+      opt: ["no", "yes", "maybe"],
+      corrAns: "maybe",
+    },
+  ];
+
+  function makeQuestion(i) {
+    let lastQuestion = cbt.length - 1;
+    let finalScore = score.reduce((a, b) => a + b, 0);
+
+    if (i < 0) {
+      n = n + 1;
+      return alert("Stop, click next to proceed");
+    } else if (i > lastQuestion) {
+      n = n - 1;
+      let ourPrompt;
+      ourPrompt = String(prompt("Do you want to submit?", "yes or no"))
+        .toLowerCase()
+        .trim();
+
+      if (ourPrompt === "yes") {
+        thediv.innerHTML = "";
+        section.innerHTML = "";
+        thediv.innerHTML = `<h1> your score is ${finalScore} out of ${cbt.length} </h1>`;
+        return alert(`your score is ${finalScore} out of ${cbt.length} `);
+      } else if (him === "no") {
+        return makeQuestion(lastQuestion);
+      } else {
+        return alert("invalid answer");
+      }
+    } else {
+      thediv.innerHTML = "";
+      thediv.innerHTML = `<h1>${
+        cbt[i].que
+      } </h1>                                       
+      ${cbt[i].opt.map((obj) => {
+        return `<div id='okay'>
+         <label for='${obj}'> ${obj} </label> 
+        <input type='radio' name='word' id='${obj}'  value="${obj}" onclick ="getAns(${i})" > `;
+      })}  
+      </div>  
+      `;
+    }
+  }
+
+  makeQuestion(n);
+
+  function getAns(index) {
+    let radioInput = document.querySelectorAll('input[name = "word"]');
+    console.log(radioInput);
+
+    let selectedValue;
+    radioInput.forEach((radio) => {
+      if (radio.checked) {
+        selectedValue = radio.value;
+
+        if (selectedValue == cbt[index].corrAns) {
+          score.splice(index, 1);
+          score.push(1);
+        } else {
+          score.splice(index, 1);
+          score.push(+0);
+        }
+      }
+    });
+  }
+
+  let previousButton = document.getElementById("previous");
+  previousButton.addEventListener("click", () => {
+    score.pop();
+  });
+</script>
