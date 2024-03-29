@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    fullname: <input type="text" id="fullname" />
+    email: <input type="text" id="email" />
+    <div> password: <input type="password" id="password" /> <button id="show&hide"> </button></div>
+    confirm password: <input type="text" id="confirmpassword" />
+    <input type="checkbox" id="checker" />
+    <button onclick="signUp()"> signup </button>
+
+
+    <table>
+        <thead>
+            <th> fullname</th>
+            <th> email</th>
+            <th> password</th>
+            <th> checked </th>
+        </thead>
+
+        <tbody id="table">
+
+
+
+        </tbody>
+
+
+
+    </table>
+
+</body>
+
+</html>
+<script>
+    let fullname = document.getElementById('fullname')
+    let email = document.getElementById('email')
+    let password = document.getElementById('password')
+    let confirmpassword = document.getElementById('confirmpassword')
+    let checker = document.getElementById('checker')
+    let table = document.getElementById('table')
+    let showandhidebutton = document.getElementById('show&hide')
+
+    let datas = []
+
+    function signUp() {
+        if (fullname.value == '' || email.value == '' || password.value == '' || confirmpassword.value == '') {
+            alert('all fields are mandatory')
+        }
+        else if (password.value.length < 8) {
+            alert("password  must be at least 8 characters")
+        }
+        else if (password.value !== confirmpassword.value) {
+            alert("password does not match")
+        }
+        else if (checker.checked !== true) {
+            alert("please agree to terms and conditions")
+        } else {
+            let userDataObj = {
+                fullname: fullname.value,
+                email: email.value,
+                password: password.value,
+                terms: checker.checked
+            }
+
+            datas.push(userDataObj)
+            alert(`sign up successful ${fullname.value}`)
+            console.log(datas);
+
+            displayTable()
+        }
+
+    }
+
+    showandhidebutton.innerHTML = 'show'
+    showandhidebutton.addEventListener('click', function () {
+        if (password.type == 'password' || showandhidebutton.innerHTML == 'show') {
+            password.type = 'text'
+            showandhidebutton.innerHTML = 'hide'
+        } else {
+            password.type = 'password'
+            showandhidebutton.innerHTML = 'show'
+        }
+
+
+        // password.type == 'password' ? password.type = 'text' : password.type = 'password'
+        // showandhidebutton.innerHTML == 'show' ?   showandhidebutton.innerHTML = 'hide' :  showandhidebutton.innerHTML = 'show'
+
+    })
+
+
+
+    let displayTable = () => {
+        table.innerHTML = ''
+
+        datas.forEach((data, index) => {
+            table.innerHTML += ` <tr>  <td>${data.fullname} </td>  <td>${data.email} </td> <td>${data.password} </td> <td>${data.terms} </td> </tr>`
+        })
+
+    }
+
+
+
+</script>
