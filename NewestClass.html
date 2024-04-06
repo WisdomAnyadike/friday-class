@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div  id="div">
+
+    </div>
+
+
+    <p id="answer">  </p>
+
+    <button onclick="alert('hi everyone')"> click me </button>
+    
+    <button id="button" onclick="displayBlock()"> display block </button>
+
+    <input/>
+</body>
+</html>
+<script>
+
+    const instructorName = '8'
+    const gravity = 9.81
+    console.log(instructorName);
+      console.log(gravity);
+   
+
+let div = document.getElementById('div')
+
+div.style.backgroundColor = 'yellow'
+div.style.width = '100px'
+div.style.height = '100px'
+div.style.display = 'none'
+
+
+function displayBlock() {
+    div.style.display = 'block'
+}
+
+
+// div.innerHTML = 'heyyyyy'
+ div.innerHTML = `<p> heyy </p>`
+ div.innerHTML = `<p> what </p>`
+
+
+ let month = 'march'
+ let day = '2nd of April'
+ let a = 5
+ let b = 2
+
+ console.log(a + b );
+
+ let total =  Math.floor(a / b)
+ let remainder = a % b
+
+ console.log(total);
+ console.log(remainder);
+
+ let todaysDate = day + ' ' + month
+console.log(todaysDate);
+
+let myName 
+
+myName = 'wisdom'
+
+console.log(myName[0]);
+
+
+Math.round(3.113)
+
+let numOne = 20
+let numTwo = 5
+
+
+console.log(Math.max(numOne, numTwo))
+
+
+console.log(     )
+
+
+let randomNum = Math.random() // random num between 0 - 0.999
+
+let highestWholeNum = Math.ceil(randomNum) // gives us the highest possible whole number 
+
+console.log(highestWholeNum )
+
+ let ans = Math.E * 25
+ let ansPi = Math.PI * 2
+
+
+ let name = " 'java' "
+ 
+ console.log(name);
+
+ let firstSentence = 'my name is'
+   name = 'denle'
+
+   let correctSentence1 = firstSentence + ' ' + name
+   let correctSentence = `${firstSentence} ${name}`
+
+    // a = 4
+    // b = 6
+
+    let firstNum = 5
+    let secondNum = 4
+
+    let text = `the addition of ${firstNum} & ${secondNum} is ${firstNum + secondNum} `
+    let text1 = 'the addition of ' + firstNum + ' & ' + secondNum + ' is ' + (firstNum + secondNum)
+    console.log(text);
+    console.log(text1);
+
+   console.log(correctSentence);
+
+
+   let c = 'z'
+   let d = '45'
+
+   
+   
+   console.log(c + d);
+
+
+   d = parseInt(d)
+   console.log(c + d);
+
+
+console.log(typeof(d));
+
+let num3 = 45
+num3 = String(num3)
+
+ let student = 'DAvid'
+   student = student.toUpperCase()
+   student = student.toLowerCase()
+
+ console.log(student);
+ let thisWord = 'javascript'
+
+ let vid = student.substring(2,5)
+console.log(vid);
+ let script = thisWord.substring(4,10)
+console.log(script);
+
+let string = '     30+ days+ of+ javascript       '
+//  string = string.split()
+ 
+//  string = string.split('+')
+//  string = string.trimStart()
+ console.log(string);
+
+ 
+ console.log(string.includes('david'));
+
+ let him = 'we are enjoying javascript so far in sqi , and i think im falling in love'
+
+ console.log( him.replaceAll(' in ' , ' out '));
+ console.log(him.charAt(7));  
+let one = '2'
+let two = 'david'
+
+ let newString = one.concat( ' ' , two)
+
+ console.log(newString);
+
+ 
+ console.log(him.match('are'));
+
+
+ let word = 'hello'
+ 
+ console.log(word.slice(3,5 ));
+
+
+</script>

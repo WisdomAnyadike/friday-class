@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input value="ttgtgrrgrg" id="input"/>
+    <button onclick="wisdom()"> Click me</button>
+    
+</body>
+</html>
+<script>
+
+    function wisdom() {
+        let input = document.getElementById('input')
+        console.log(input.value);
+    }
+
+//    getInputValue()
+
+// const list = new Array(60000).join('1.1').split('.');
+// console.log(list);
+
+// function removeItemsFromList() {
+//     var item = list.pop()
+
+//     if (item) {
+//       setTimeout(() => {
+//         removeItemsFromList() 
+//       }, 1000)
+//     }
+// };
+
+// removeItemsFromList();
+
+const list = new Array(60000).join('1.1').split('.');
+
+function removeItemsFromList() {
+    var item = list.pop();
+
+   if (item) {
+       setTimeout(()=> removeItemsFromList(), 1000 );
+   } else {
+    console.log("End = "+list.length);
+   }
+};
+
+removeItemsFromList();
+
+console.log("End = "+ list.length);
+
+   
+console.log(teddy);
+var teddy = 'wiz'
+    
+
+function bigBrother() {
+    function littleBrother() {
+        return 'it is me!';
+    }
+    return littleBrother();
+
+    function littleBrother() {
+        return 'no me!';
+    }
+}
+
+console.log(bigBrother());
+   
+
+
+
+
+</script>
