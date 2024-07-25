@@ -1,94 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
-    <div id="div" onclick="">    </div>
-    
- <input type="text" id="input"/> <button onclick="addTodo()"> ADD </button>
- <div id="todoList"> 
 
 
 
 
- </div>
+
+
+
+    </div>
 
 </body>
+
 </html>
-<script> 
+<script>
+    let num = 20
 
-
-// for (let index = 10; index >= -1 ; index--) {
- 
-//    document.body.innerHTML += `${index}`
-// }
-
-
-// let arr = ['ggg' ]
-
-
-// for (let index = 0; index < arr.length; index++) {
-//     div.innerHTML +=  `<p>  ${arr[index]} </p>`
-// }
-
-
-
-let input = document.getElementById("input")
-let todoList = document.getElementById("todoList")
-let todoArr = []
-
-
-function displayTodo() {
-    todoList.innerHTML = ''
-    for (let index = 0; index < todoArr.length; index++) {
-   todoList.innerHTML += `<p> ${todoArr[index]}  <button onclick="deleteTodo(${index})"> delete </button> </p>`
+    if (num < 10) {
+        console.log(' false ');
+    } else {
+        console.log('20 is greater than 10 not less than 10');
     }
-}
-
-function addTodo() {
- todoArr.push(input.value)
-displayTodo()  
-}
 
 
+    let string = 'red'
 
-function deleteTodo(i) {
-    todoArr.splice( i , 1)
-    console.log(todoArr);
-    displayTodo()
-}
+    if (string.length === 6) {
+        console.log('the string contains 6 letters');
+    } else if (string.length === 0) {
+        console.log('empty string');
+    } else {
+        console.log('string is less than or greater than 6');
+    }
 
+    // let num1 = 9
+    // let num2 = '9'
 
-
-todoArr.splice(0, 2 , 'folarin' , "fola" )
-
-
-
-
-
-
-// function saySmth(params) {
-//     console.log(`hello ${params}`);
-// }
-
-
-// saySmth('wiz')
-// saySmth('dave')
+    // if (num1 === num2) {
+    //     console.log('hello')
+    // } else {
+    //     console.log('hi')
+    // }
 
 
-// let num = 0
-// let saved = setInterval(()=> {
-// num++
-// console.log(num);
-//  if (num == 20){
-//     clearInterval(saved)
-//  }
-// }, 1000)
+    // let thisPrompt = prompt('who is the biggest artist?', 'input text here') // WiZkId
+    //   let correctPrompt = thisPrompt.toLowerCase()
+    //   console.log(correctPrompt);
+    // switch (correctPrompt) {
+    //     case 'wizkid':
+    //         console.log('this is wizkid');
+    //         break;
 
+    //     case 'davido':
+    //         console.log('this is davido');
+    //         break;
+    //     case 'burnaboy':
+    //         console.log('this is burnaboy');
+    //         break;
+
+    //     default:
+    //         console.log('you didnt guess any right');
+    //         break;
+    // }
+
+    // (condition)        true                 false
+    if (0 == true) {
+        console.log('hey')
+    } else {
+        console.log('hi');
+    }
+
+    0 == true ? console.log('hey') : console.log('hi');
+
+    let string1 = 'heyy'
+    string1[3] = 'd'
+    console.log(string1);
+
+    let array = [undefined, null, 34, 'hello', { wow: 'wow' }, ['he', 'she']]
+    array[3] = 'whatsup'
+    console.log(array);
+
+    let newArray = new Array(1).fill('hey')
+    let newArr = []
+
+    console.log(newArray);
+
+   let latestArray =  array.concat(newArray)
+   console.log(latestArray);
+
+
+   let masterObj = {
+      printName (){
+        console.log(this.name);
+      }
+   }
+
+   function createObj( name ) {
+    let createdObj = Object.create(masterObj)
+    createdObj.name = name
+    return createdObj
+   }
+
+  let first0bj = createObj('red') 
+   first0bj.printName() 
+   let second0bj = createObj('bread') 
+   second0bj.printName() 
 
 
 

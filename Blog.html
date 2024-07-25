@@ -98,7 +98,7 @@
         </div>
 
 
-        
+
     </section>
 </body>
 
@@ -145,7 +145,7 @@
             blogComment: blogComment.value,
             liked: false,
             image: localStorage.getItem('data'),
-            date:  date.toLocaleDateString()
+            date: date.toLocaleDateString()
         }
 
         console.log(post);
@@ -157,21 +157,274 @@
         console.log(blogPosts);
         fullname.value = ''
         address.value = ''
-        blogComment.value = ''     
+        blogComment.value = ''
         localStorage.removeItem('data')
-       
+
     }
 
 
-    
 
 
-   
-
-  
 
 
-    
 
+
+    const array = [1, 2, 3];
+
+    function getMaxNumber(arr) {
+        //code here  
+        return Math.max.apply(null, arr)
+    }
+
+    getMaxNumber(array) // should return 3
+
+
+
+    const character = {
+        name: 'Simon',
+        getCharacter() {
+            return this.name;
+        }
+    };
+    var name = 'dan'
+    const giveMeTheCharacterNOW = character.getCharacter.bind(this)
+
+    //How Would you fix this?
+    console.log('?', giveMeTheCharacterNOW()); //this should return 'Simon' but doesn't
+
+</script>
+
+<script>
+    'use strict'
+    var hisName = undefined
+
+
+
+    var user1 = { name: "nerd", org: "dev" };
+    var user2 = { name: "nerd", org: "dev" };
+
+    var eq = user1 == user2;
+    console.log(Object.values(user1) === Object.values(user2))
+    console.log(JSON.stringify(user1) == JSON.stringify(user2))
+
+
+    // alert(eq); // gives false
+
+
+    // var user1 = {name : "nerd", org: "dev"};
+    // var user2 = {name : "nerd", org: "dev"};
+    // var eq = user1 == user2;
+    // alert(eq); // gives false
+
+
+
+    const number = 100
+    const string = "Jay"
+    let obj1 = {
+        value: "a"
+    }
+    let obj2 = {
+        value: "b"
+    }
+    let obj3 = obj2;
+
+    function change(number, string, obj1, obj2) {
+        number = number * 10;
+        string = "Pete";
+        obj1 = obj2;
+        obj2.value = "c";
+        return number
+    }
+
+    console.log(change(number, string, obj1, obj2));
+
+
+    //Guess the outputs here before you run the code: 
+    console.log(number);
+    console.log(string);
+    console.log(obj1.value);
+
+
+    function hello() {
+        hello = 'hello'
+        return hello
+    }
+    console.log(hello());
+
+</script>
+<script>
+
+    console.log(0 == []);
+
+
+    "" == 0
+    "" == []
+    "" == {}
+    0 == []
+    0 == {}
+    0 == null
+
+    const multiplyby = (num1) => {
+        return function (num2 = 4) {
+            return num1 * num2
+        }
+    }
+
+
+
+    console.log(multiplyby(2)(1));
+
+    // let earlyStudents = function () {
+    //     let addition = [2,4,5]
+    //     return addition
+    // }
+
+
+    // function todaysDate() {
+    //      return 'april 11th'
+    // }
+
+    // console.log(earlyStudents());
+
+
+    // console.log(todaysDate());
+
+
+    // let fullDate = `todays full date is ${todaysDate()} , 2024 `
+
+
+    // function letCovenantLogin() {
+    //     return 'access granted to covenant'
+    // }
+
+    // function letTimiLogin() {
+    //     return 'access granted to timi'
+    // }
+
+    // console.log(letCovenantLogin());
+    // console.log(letTimiLogin());
+
+
+    // function letUserLogin(user1 , user2 = 'covenant') {
+    //     return 'access granted to ' + user1 + ',' + 'access granted to ' + user2
+    // }
+
+    // console.log(letUserLogin('timi' , 'festus'));
+    // console.log(letUserLogin('david' , 'goliath'));
+
+    // function multiplyBy2( Num) {
+    //     return Num * 2
+    // }
+
+
+    // console.log(multiplyBy2(5));
+    // console.log(multiplyBy2(1025));
+
+    // function func1() {
+    //     return function () {
+    //         console.log('hey friend');
+    //     }
+    // }
+
+    // let firstFunction = func1()
+
+    // firstFunction()
+
+//     (function sayHello(params) {
+//         console.log('say hello')} ())
+
+
+// console.log(hisName);
+// let hisName = 'david'
+
+// javaClass()
+// function javaClass() {
+//     console.log('Java Class');
+// }
+// </script>
+<script>
+
+    function callSmth(params, num, g = 23) {
+        console.log(g);
+    }
+
+    callSmth('wisdom', 45, 34)
+
+    function convertCelsiusToFahrenheit(celsius) {
+        return `${(celsius * (9 / 5)) + 32} oF `
+    }
+
+    console.log(convertCelsiusToFahrenheit(100));
+
+    let view
+    function initialize() {
+        view = 'mountain'
+        let called = 0
+
+        return function () {
+            if (called == 0) {
+                called++
+                return console.log('view has been set');
+            } else {
+                return
+            }
+
+        }
+
+    }
+
+
+
+    let startOnce = initialize()
+    startOnce()
+
+    startOnce()
+
+    const arr = [1, 2, 3, 4]
+    for (var i = 0; i < arr.length; i++) {
+
+        setTimeout(() => {
+            console.log('i am at index' + i);
+        }, 1000);
+
+    }
+
+
+
+    console.log(i);
+
+    function drama1(params) {
+        return console.log(1 * params);
+    }
+    drama1(10)
+    let drama2
+    drama1.apply(drama2, [20])
+
+
+
+
+
+
+
+
+    console.log(Date.prototype.LastYear = function () {
+        return this.getFullYear() - 1;
+    });
+
+    let date = new Date('1910-10-10')
+    console.log(date.LastYear())
+
+
+    Array.prototype.map = function () {
+        for (let index = 0; index < this.length; index++) {
+            console.log(this[index] + ' yolo')
+        }
+    }
+
+    let arr1 = [2, 5, 6]
+    let arr4 = [568, 'w0w', 'scubs']
+
+    arr1.map()
+    arr4.map()
 
 </script>

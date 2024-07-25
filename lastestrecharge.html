@@ -64,104 +64,104 @@
 </html>
 
 <script>
-    // let provider = document.getElementById("provider")
-    // let amount = document.getElementById("amount")
-    // let pin = ""
-    // let allPins = []
-    // let MtnBalance =  JSON.parse(localStorage.getItem('theBalance')) 
-    // localStorage.removeItem('theBalance')
-    // MtnBalance  = 0 + MtnBalance
-    // let AirtelBalance = 0
-    // let gottenPin = JSON.parse(localStorage.getItem("card"));
-    // let loadInput = document.getElementById("loadInput")
-    // balMTN.innerHTML =  MtnBalance;
-    // balAirtel.innerHTML = AirtelBalance
-    // function genAirtime(){
-    //     for (let index = 0; index < [...Array(10)].length; index++) {
-    //         let rand = Math.floor(Math.random()*10)
-    //         pin += rand;
-    //         console.log(rand);
-    //     }
-    //     console.log(pin);
-    //     let card = {
-    //         pin: pin,
-    //         used: false,
-    //         provider: provider.value,
-    //         amount: Number(amount.value)
-    //     }
-    //     if(card.provider == '' || card.amount == ''){
-    //         alert('Make sure you\'ve picked a Provider & Amount')
+    let provider = document.getElementById("provider")
+    let amount = document.getElementById("amount")
+    let pin = ""
+    let allPins = []
+    let MtnBalance =  JSON.parse(localStorage.getItem('theBalance')) 
+    localStorage.removeItem('theBalance')
+    MtnBalance  = 0 + MtnBalance
+    let AirtelBalance = 0
+    let gottenPin = JSON.parse(localStorage.getItem("card"));
+    let loadInput = document.getElementById("loadInput")
+    balMTN.innerHTML =  MtnBalance;
+    balAirtel.innerHTML = AirtelBalance
+    function genAirtime(){
+        for (let index = 0; index < [...Array(10)].length; index++) {
+            let rand = Math.floor(Math.random()*10)
+            pin += rand;
+            console.log(rand);
+        }
+        console.log(pin);
+        let card = {
+            pin: pin,
+            used: false,
+            provider: provider.value,
+            amount: Number(amount.value)
+        }
+        if(card.provider == '' || card.amount == ''){
+            alert('Make sure you\'ve picked a Provider & Amount')
 
-    //     }
-    //   else if(gottenPin == null){
-    //         gottenPin = []
-    //         gottenPin.push(card)
-    //         localStorage.setItem("card", JSON.stringify(gottenPin))
-    //         dispCards()
-    //         pin = ""
-    //     }else{
-    //         gottenPin.push(card)
-    //         localStorage.setItem("card", JSON.stringify(gottenPin))
-    //         dispCards()
-    //         pin = ""
-    //     }
-    // }
-    // console.log(gottenPin);
+        }
+      else if(gottenPin == null){
+            gottenPin = []
+            gottenPin.push(card)
+            localStorage.setItem("card", JSON.stringify(gottenPin))
+            dispCards()
+            pin = ""
+        }else{
+            gottenPin.push(card)
+            localStorage.setItem("card", JSON.stringify(gottenPin))
+            dispCards()
+            pin = ""
+        }
+    }
+    console.log(gottenPin);
 
-    // function dispCards(){
-    //     tbody.innerHTML = "";
-    //     gottenPin.forEach((el, i) => {
-    //         document.getElementById("tbody").innerHTML += `
-    //             <tr>
-    //                 <td>
-    //                     <input id="copied${i}" value="${el.pin}" /> 
-    //                     <button onclick="copyPin(${i})">c</button>   
-    //                 </td>
-    //                 <td>${el.used}</td>
-    //                 <td>${el.provider}</td>
-    //                 <td>${el.amount}</td>
+    function dispCards(){
+        tbody.innerHTML = "";
+        gottenPin.forEach((el, i) => {
+            document.getElementById("tbody").innerHTML += `
+                <tr>
+                    <td>
+                        <input id="copied${i}" value="${el.pin}" /> 
+                        <button onclick="copyPin(${i})">c</button>   
+                    </td>
+                    <td>${el.used}</td>
+                    <td>${el.provider}</td>
+                    <td>${el.amount}</td>
                     
-    //             </tr>`
-    //     });
-    // }
-    // dispCards()
+                </tr>`
+        });
+    }
+    dispCards()
 
-    // function loadAirtime(){
-    //     let loadedAirtime =   String(loadInput.value).trim() 
-    //     let pattern = /^[*]{1}[3]{1}[1]{2}[*]{1}[0-9]{10}[#]{1}$/
+    function loadAirtime(){
+        let loadedAirtime =   String(loadInput.value).trim() 
+        let pattern = /^[*]{1}[3]{1}[1]{2}[*]{1}[0-9]{10}[#]{1}$/
       
        
-    //     let found = gottenPin.find((el)=> el.pin == loadedAirtime.slice(5,15) )
+        let found = gottenPin.find((el)=> el.pin == loadedAirtime.slice(5,15) )
        
-    //     if(found.used == true){
+        if(found.used == true){
 
-    //         alert("Airtime has already been used")
-    //         return;
-    //     }else if( pattern.test(loadedAirtime) && found.provider == "MTN" ){
-    //         found.used = true;
-    //         localStorage.setItem("card", JSON.stringify(gottenPin))   
-    //         MtnBalance += Number(found.amount)
-    //         localStorage.setItem("theBalance", JSON.stringify(MtnBalance))
-    //         balMTN.innerHTML =  MtnBalance ;
-    //         dispCards()
-    //     }else if (!pattern.test(loadedAirtime)){
-    //         alert("invalid format")
-    //         return 
-    //     }
+            alert("Airtime has already been used")
+            return;
+        }else if( pattern.test(loadedAirtime) && found.provider == "MTN" ){
+            found.used = true;
+            localStorage.setItem("card", JSON.stringify(gottenPin))   
+            MtnBalance += Number(found.amount)
+            localStorage.setItem("theBalance", JSON.stringify(MtnBalance))
+            balMTN.innerHTML =  MtnBalance ;
+            dispCards()
+        }else if (!pattern.test(loadedAirtime)){
+            alert("invalid format")
+            return 
+        }
 
-    // }
+    }
    
-    // async function copyPin(i){
-    //     let pinVal = document.getElementById(`copied${i}`).value;
-    //     let copyText = document.getElementById(`copied${i}`)
-    //     copyText.select();
-    //     copyText.setSelectionRange(0,99999);
-    //     await navigator.clipboard.writeText(pinVal);
-    //     alert("Copied")
-    // }
+    async function copyPin(i){
+        let pinVal = document.getElementById(`copied${i}`).value;
+        let copyText = document.getElementById(`copied${i}`)
+        copyText.select();
+        copyText.setSelectionRange(0,99999);
+        await navigator.clipboard.writeText(pinVal);
+        alert("Copied")
+    }
  
   
  
-// localStorage.removeItem('card')
+localStorage.removeItem('card')
    
 </script>
